@@ -1,0 +1,36 @@
+body {
+    margin: 1em auto;
+    max-width: 40em;
+    line-height: 1.61;
+    font-size: 1.2em;
+    font-family: sans-serif;
+    color: #333;
+    padding: 0 0.5em;
+}
+h1,
+h2,
+h3 {
+    line-height: 1.2;
+}
+@media print {
+    body {
+        max-width: none;
+    }
+}
+
+mark {
+    background: #8ad;
+}
+del {
+    background: #eaa;
+}
+ins {
+    background: #9cb;
+}
+
+mark,
+del,
+ins {
+    border-radius: 0.2em;
+    padding: 0.1em 0.2em;
+}

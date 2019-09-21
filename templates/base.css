@@ -1,18 +1,1 @@
-body {
-    margin: 1em auto;
-    max-width: 40em;
-    line-height: 1.61;
-    font: 1.2em/1.62 sans-serif;
-    color: #333;
-    padding: 0 0.5em;
-}
-h1,
-h2,
-h3 {
-    line-height: 1.2;
-}
-@media print {
-    body {
-        max-width: none;
-    }
-}
+/home/raymond/backup/mithray/smd-perl/templates/minimal.css
