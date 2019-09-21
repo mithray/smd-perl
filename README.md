@@ -34,9 +34,9 @@ To use **em** tags put single * or _ on each side of a word or phrase.
 
 ## Critic Markup
 
-Comment with {>curly parenthesis and angle brackets<}
+Comment with <mark><em>curly parenthesis and angle brackets</em></mark>
 
-Use ins with <ins>plus</ins> del with {-minus-}, mark with {=mark=} 
+Use ins with <ins>plus</ins> del with <del>minus</del>, mark with <mark>mark</mark> 
 
 
 
