@@ -12,7 +12,8 @@ use lib "$FindBin::Bin/lib";
 # Inside Block
 use phrasing;
 use codespans;
-use escape_special_chars;
+use escape_special_characters;
+
 =insideblock
 use images;
 use anchors;
