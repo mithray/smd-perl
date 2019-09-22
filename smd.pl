@@ -13,9 +13,9 @@ use lib "$FindBin::Bin/lib";
 use phrasing;
 use codespans;
 use escape_special_characters;
+use images;
 
 =insideblock
-use images;
 use anchors;
 use autolinks;
 use encode_amps_and_angles;
@@ -67,13 +67,39 @@ sub inside_block {
 }
 =cut
 
-sub convert_to_html {
-    my $text = $_[0];
+sub span_gamut {
+    my $text = shift;
+
+    $text = code_spans($text);
+    $text = escape_special_characters($text);
+    $text = images($text);
+    $text = anchors($text);
+    $text = auto_links();
+    $text = amps_angles($text);
+    $text = phrasing($text);
+    $text = line_breaks($text);
+
+    return $text;
+}
+
+sub block_gamut {
+    my $text = shift;
+
     $text = headings($text);
     $text = lists($text);
-    $text = codespans($text);
-    $text = escape_special_characters($text);
-    $text = phrasing($text);
+    $text = horizontal_rules($text);
+    $text = code_blocks($text);
+    $text = blockquotes($text);
+    $text = hash_html($text);
+    $text = paragraphs($text);
+
+    return $text;
+}
+
+sub convert_to_html {
+    my $text = shift;
+    $text = block_gamut($text)
+    $text = span_gamut($text)
     return $text
 }
 
