@@ -7,7 +7,6 @@ use utf8;
 
 use FindBin;                  
 use lib "$FindBin::Bin/lib";
-#FindBin::again();
 
 # Inside Block
 use phrasing;
@@ -43,7 +42,7 @@ sub get_file{
     }
 }
 
-sub prepare_base_html {
+sub get_html_skeleton {
     my $base_html = get_file('templates/base.html');
     my $base_css = get_file('templates/base.css');
     my $html_title = "MD Conversion with Perl";
@@ -51,21 +50,6 @@ sub prepare_base_html {
     $base_html =~ s/<!-- title -->/$html_title/;
     return $base_html;
 }
-
-=span
-sub inside_block {
-	my $text = shift;
-	$text = _DoCodeSpans($text);
-	$text = _EscapeSpecialChars($text);
-	$text = _DoImages($text);
-	$text = _DoAnchors($text);
-	$text = _DoAutoLinks($text);
-	$text = _EncodeAmpsAndAngles($text);
-	$text = _DoItalicsAndBold($text);
-	$text =~ s/ {2,}\n/ <br$g_empty_element_suffix\n/g;
-	return $text;
-}
-=cut
 
 sub span_gamut {
     my $text = shift;
@@ -129,7 +113,7 @@ $text = standardize_newlines($text);
 $text = detab($text);
 $text =~ s/^[ \t]+$//mg; #Delete lines of only Spaces and tabs
 $text= convert_to_html($text);
-my $html = prepare_base_html();
+my $html = get_html_skeleton();
 $html =~ s/<article>/<article>$text/;
 
 
