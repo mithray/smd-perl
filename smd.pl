@@ -8,29 +8,21 @@ use utf8;
 use FindBin;                  
 use lib "$FindBin::Bin/lib";
 
-# Inside Block
+# Span Gamut
 use phrasing;
-use codespans;
+use code_spans;
 use escape_special_characters;
 use images;
 
-=insideblock
-use anchors;
-use autolinks;
-use encode_amps_and_angles;
-use phrasing; #italics, bold, critic
-use lines;
-=cut
-
-# Block
-use headings;
-use lists;
+use block_gamut;
 
 # Helpers
 use detab;
+use standardize_newlines;
+use get_html_skeleton;
 
-my $g_list_level = 0;
-my $g_tab_width = 4;
+# Globals
+use get_globals;
 
 sub get_file{
     if (open (  my $fh, "<:encoding(UTF-8)", "$_[0]")){
@@ -40,15 +32,6 @@ sub get_file{
         }
         return $data;
     }
-}
-
-sub get_html_skeleton {
-    my $base_html = get_file('templates/base.html');
-    my $base_css = get_file('templates/base.css');
-    my $html_title = "MD Conversion with Perl";
-    $base_html =~ s/<!-- css -->/$base_css/;
-    $base_html =~ s/<!-- title -->/$html_title/;
-    return $base_html;
 }
 
 sub span_gamut {
@@ -66,33 +49,13 @@ sub span_gamut {
     return $text;
 }
 
-sub block_gamut {
+sub convert_to_html {
     my $text = shift;
-
-    $text = headings($text);
-    $text = lists($text);
-    $text = horizontal_rules($text);
-    $text = code_blocks($text);
-    $text = blockquotes($text);
-    $text = hash_html($text);
-    $text = paragraphs($text);
-
+    $text = block_gamut($text);
+    $text = span_gamut($text);
     return $text;
 }
 
-sub convert_to_html {
-    my $text = shift;
-    $text = block_gamut($text)
-    $text = span_gamut($text)
-    return $text
-}
-
-sub standardize_newlines {
-    my $md = $_[0];
-    $md =~ s{\r\n}{\n}g;
-    $md =~ s{\r}{\n}g; 	
-    return $md;
-}
 sub end_with_newlines {
     my $text = $_[0];
     $text .= "\n\n";
@@ -118,4 +81,3 @@ $html =~ s/<article>/<article>$text/;
 
 
 print "$html"
-

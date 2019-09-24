@@ -6,15 +6,13 @@ use Exporter 'import';
 our $VERSION = '1.00';
 our @EXPORT  = qw(images);
 
-use get_globals;
+use getGlobals;
 
 sub images {
-	my $text = shift;
-        my %globals = get_globals();
+        my %globals = getGlobals();
         my %g_urls = $globals{'g_urls'};
         my %g_escape_table = $globals{'g_escape_table'};
-        my %g_titles = $globals{'g_titles'};
-        my $g_empty_element_suffix = $globals{'g_empty_element_suffix'};
+	my $text = shift;
 	$text =~ s{
 		(				# wrap whole match in $1
 		  !\[
