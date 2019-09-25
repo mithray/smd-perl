@@ -7,6 +7,7 @@ our $VERSION = '1.00';
 our @EXPORT  = qw(detab);
 
 my $g_tab_width = 4;
+use get_globals;
 
 sub detab {
 

@@ -6,10 +6,17 @@ use Exporter 'import';
 our $VERSION = '1.00';
 our @EXPORT  = qw(hash_html_blocks);
 
+use get_globals;
+my %globals = get_globals();
+use Digest::MD5 qw(md5_hex);
+
 sub hash_html_blocks {
 	my $text = shift;
-	my $less_than_tab = $g_tab_width - 1;
+        my %globals = get_globals();
+        my $g_tab_width = $globals{'g_tab_width'};
+        my %g_html_blocks;# = $globals{'g_html_blocks'};
 
+	my $less_than_tab = $g_tab_width - 1;
 	# Hashify HTML blocks:
 	# We only want to do this for block-level HTML tags, such as headers,
 	# lists, and tables. That's because we still want to wrap <p>s around

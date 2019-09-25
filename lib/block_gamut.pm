@@ -11,7 +11,7 @@ use lists;
 use horizontal_rules;
 use code_blocks;
 use block_quotes;
-use hash_html;
+use hash_html_blocks;
 use paragraphs;
 
 sub block_gamut {
@@ -22,7 +22,7 @@ sub block_gamut {
     $text = horizontal_rules($text);
     $text = code_blocks($text);
     $text = block_quotes($text);
-    $text = hash_html($text);
+    $text = hash_html_blocks($text);
     $text = paragraphs($text);
 
     return $text;

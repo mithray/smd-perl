@@ -6,6 +6,7 @@ use Exporter 'import';
 our $VERSION = '1.00';
 our @EXPORT  = qw(get_html_skeleton);
 
+use get_file;
 
 sub get_html_skeleton {
     my $base_html = get_file('../templates/base.html');

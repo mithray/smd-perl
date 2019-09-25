@@ -9,45 +9,19 @@ use FindBin;
 use lib "$FindBin::Bin/lib";
 
 # Span Gamut
-use phrasing;
-use code_spans;
-use escape_special_characters;
-use images;
-
 use block_gamut;
+use span_gamut;
 
 # Helpers
 use detab;
 use standardize_newlines;
 use get_html_skeleton;
+use get_file;
 
 # Globals
 use get_globals;
 
-sub get_file{
-    if (open (  my $fh, "<:encoding(UTF-8)", "$_[0]")){
-        my $data = '';
-        while (my $row = <$fh>){
-            $data = "$data$row";
-        }
-        return $data;
-    }
-}
 
-sub span_gamut {
-    my $text = shift;
-
-    $text = code_spans($text);
-    $text = escape_special_characters($text);
-    $text = images($text);
-    $text = anchors($text);
-    $text = auto_links();
-    $text = amps_angles($text);
-    $text = phrasing($text);
-    $text = line_breaks($text);
-
-    return $text;
-}
 
 sub convert_to_html {
     my $text = shift;
