@@ -1,11 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
-
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link href="https://cdn.jsdelivr.net/npm/prismjs@1.17.1/themes/prism.css" rel="stylesheet"/>
-    <title>MD Conversion with Perl</title>
-    <style>body {
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+                                <script src="https://cdn.jsdelivr.net/npm/echarts@4.3.0/dist/echarts.min.js"></script>
+<link href="https://cdn.jsdelivr.net/npm/prismjs@1.17.1/themes/prism.css" rel="stylesheet"/>
+<title>MD Conversion with Perl</title>
+<style>body {
     margin: 1em auto;
     max-width: 40em;
     line-height: 1.61;
@@ -42,9 +42,7 @@ ins {
     padding: 0.1em 0.2em;
 }
 </style>
-    <script src="https://cdn.jsdelivr.net/npm/echarts@4.3.0/dist/echarts.min.js"></script>
-
-    <article><p><h1>Markdown</h1></p>
+<article><p><h1>Markdown</h1></p>
 
 <p>This is a markdown implementation intended to be flexible and hackable to support multiple versions of markdown.</p>
 
@@ -113,39 +111,32 @@ To use <strong>em</strong> tags put single * or _ on each side of a word or phra
 
 <p><pre class='language-javascript'><code class='language-javascript'>var some_var = 5</code></pre></p>
 
-<p><div id="chartf7d2cf597080becf2b84b8c230e065d9" style="width: 100%;height: 30em;"></div>
-            <script type='text/javascript'>
-                let options = {
-    title: {
-        text: 'ECharts entry example'
-    },
-    tooltip: {},
-    legend: {
-        data:['Sales']
-    },
-    xAxis: {
-        data: ["shirt","cardign","chiffon shirt","pants","heels","socks"]
-    },
-    yAxis: {},
-    series: [{
-        name: 'Sales',
-        type: 'bar',
-        data: [5, 20, 36, 10, 10, 20]
-    }]
-}
- 
-                let chartf7d2cf597080becf2b84b8c230e065d9 = echarts.init(document.getElementById("chartf7d2cf597080becf2b84b8c230e065d9"))
-                chartf7d2cf597080becf2b84b8c230e065d9.setOption(options)
-            </script>
-        </p>
+<script src="https://cdn.jsdelivr.net/npm/prismjs@1.17.1/components/prism-core.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/prismjs@1.17.1/plugins/autoloader/prism-autoloader.min.js"></script>
+                    
+<div id="chart" style="width: 600px;height:400px;"></div>
+<script type="text/javascript">
+    // based on prepared DOM, initialize echarts instance
+    var myChart = echarts.init(document.getElementById('chart'));
 
-<p><div class="mermaid">graph LR
-    A --- B
-    B-->C[fa:fa-ban forbidden]
-    B-->D(fa:fa-spinner anteohu);
-</div></p></article>
-
-    <script src="https://unpkg.com/mermaid@8.3.1/dist/mermaid.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/prismjs@1.17.1/components/prism-core.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/prismjs@1.17.1/plugins/autoloader/prism-autoloader.min.js"></script>
-    <script>mermaid.initialize({startOnLoad:true});</script>
+    // specify chart configuration item and data
+    var option = {
+        title: {
+            text: 'ECharts entry example'
+        },
+        tooltip: {},
+        legend: {
+            data:['Sales']
+        },
+        xAxis: {
+            data: ["shirt","cardign","chiffon shirt","pants","heels","socks"]
+        },
+        yAxis: {},
+        series: [{
+            name: 'Sales',
+            type: 'bar',
+            data: [5, 20, 36, 10, 10, 20]
+        }]
+};
+myChart.setOption(option);
+</script>

@@ -54,3 +54,31 @@ Inline code spans with `backticks`.
 ```javascript
 var some_var = 5
 ```
+
+@@@echarts
+{
+    title: {
+        text: 'ECharts entry example'
+    },
+    tooltip: {},
+    legend: {
+        data:['Sales']
+    },
+    xAxis: {
+        data: ["shirt","cardign","chiffon shirt","pants","heels","socks"]
+    },
+    yAxis: {},
+    series: [{
+        name: 'Sales',
+        type: 'bar',
+        data: [5, 20, 36, 10, 10, 20]
+    }]
+}
+@@@
+
+@@@mermaid
+graph LR
+    A --- B
+    B-->C[fa:fa-ban forbidden]
+    B-->D(fa:fa-spinner anteohu);
+@@@

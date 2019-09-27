@@ -82,7 +82,7 @@ $text = process_markdown($text);
 if ($cli_opts{'wrap'}) {			# Use HTML tag style instead of XHTML
     my $wrapper= get_html_skeleton();
     my $wrapped = $wrapper;
-    $wrapped =~ s/<article>/<article>$text/;
+    $wrapped =~ s/<!-- content -->/$text/;
     $text = $wrapped;
 }
 print $text;
