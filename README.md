@@ -1,12 +1,12 @@
-<article><h1>Markdown</h1>
+<p><h1>Markdown</h1></p>
 
-This is a markdown implementation intended to be flexible and hackable to support multiple versions of markdown.
+<p>This is a markdown implementation intended to be flexible and hackable to support multiple versions of markdown.</p>
 
-<h2>Contents     </h2>
+<p><h2>Contents</h2></p>
 
-<h3>Implemented</h3>
+<p><h3>Implemented</h3></p>
 
-<ul>
+<p><ul>
 <li>Headings
 </li>
 <li>Phrasing Elements
@@ -16,9 +16,9 @@ This is a markdown implementation intended to be flexible and hackable to suppor
 <li>Critic Markup
 </li>
 </ul>
-<h3>Not Implemented</h3>
+<h3>Not Implemented</h3></p>
 
-<ul>
+<p><ul>
 <li>Lists
 </li>
 <li>Line Breaks
@@ -44,27 +44,26 @@ This is a markdown implementation intended to be flexible and hackable to suppor
 <li>TEX
 </li>
 </ul>
-<h2>Phrasing Elements</h2>
+<h2>Phrasing Elements</h2></p>
 
-To use <strong>strong</strong> tags put double ** or __ on each side of a word or phrase.
-To use <strong>em</strong> tags put single * or _ on each side of a word or phrase.
+<p>To use <strong>strong</strong> tags put double ** or __ on each side of a word or phrase.
+To use <strong>em</strong> tags put single * or _ on each side of a word or phrase.</p>
 
-<h2>Critic Markup</h2>
+<p><h2>Critic Markup</h2></p>
 
-Comment with <mark><em>curly parenthesis and angle brackets</em></mark>
+<p>Comment with <mark><em>curly parenthesis and angle brackets</em></mark></p>
 
-Use ins with <ins>plus</ins> del with <del>minus</del>, mark with <mark>mark</mark> 
+<p>Use ins with <ins>plus</ins> del with <del>minus</del>, mark with <mark>mark</mark> </p>
 
+<p><h2>Headings h1-h6. With span gamut such as <code>code</code>. <strong>bold</strong>, <em>italics</em>, critic <del>markup</del>.</h2></p>
 
-Superscript with <sup>carrots</sup>. Subscript with <ins><sub>tilds</sub></ins><sup><ins>tilds</ins></sup>
+<p>Use between 1 and 6 <strong>#</strong> at the start of a line to generate a heading.</p>
 
-<h2>Headings h1-h6</h2>
+<p>Superscript with <sup>carrots</sup>. Subscript with <sub>tilds</sub>. </p>
 
-Use between 1 and 6 <strong>#</strong> at the start of a line to generate a heading.
+<p><h2>Code</h2></p>
 
+<p>Inline code spans with <code>backticks</code>.</p>
 
-<h2>Code</h2>
-
-Inline code spans with <code>backticks</code>
-
-
+<p><pre><code>var someb14a7b8059d9c055954c92674ce60032var = 5
+</code></pre></p>

@@ -22,29 +22,25 @@ sub code_blocks {
     my $g_tab_width = $globals{'g_tab_width'};
 
 
-
-	$text =~ s{
-			(?:\n\n|\A)
-			(	            # $1 = the code block -- one or more lines, starting with a space/tab
-			  (?:
-			    (?:[ ]{$g_tab_width} | \t)  # Lines must start with a tab or a tab-width of spaces
-			    .*\n+
-			  )+
-			)
-			((?=^[ ]{0,$g_tab_width}\S)|\Z)	# Lookahead for non-space at line-start, or end of doc
-		}{
-			my $codeblock = $1;
-			my $result; # return value
-
-			$codeblock = encode_code(outdent($codeblock));
-			$codeblock = detab($codeblock);
-			$codeblock =~ s/\A\n+//; # trim leading newlines
-			$codeblock =~ s/\s+\z//; # trim trailing whitespace
-
-			$result = "\n\n<pre><code>" . $codeblock . "\n</code></pre>\n\n";
-
-			$result;
-		}egmx;
+    $text =~ s{
+            (?:\n\n|\A)
+            (	            # $1 = the code block -- one or more lines, starting with a space/tab
+                (?:
+                (?:[ ]{$g_tab_width} | \t)  # Lines must start with a tab or a tab-width of spaces
+                .*\n+
+                )+
+	    )
+            ((?=^[ ]{0,$g_tab_width}\S)|\Z)	# Lookahead for non-space at line-start, or end of doc
+	}{
+            my $codeblock = $1;
+	    my $result; # return value
+            $codeblock = encode_code(outdent($codeblock));
+            $codeblock = detab($codeblock);
+            $codeblock =~ s/\A\n+//; # trim leading newlines
+            $codeblock =~ s/\s+\z//; # trim trailing whitespace
+            $result = "\n\n<pre><code>" . $codeblock . "\n</code></pre>\n\n";
+            $result;
+        }egmx;
 
 	return $text;
 }

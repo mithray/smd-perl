@@ -7,8 +7,7 @@ our $VERSION = '1.00';
 our @EXPORT  = qw(code_spans);
 
 sub code_spans {
-
-	my $text = shift;
-        $text =~ s{`(.*?)`}{<code>$1<\/code>};
-	return $text;
+    my $text = shift;
+    $text =~ s{`(.*?)`}{<code>$1<\/code>};
+    return $text;
 }

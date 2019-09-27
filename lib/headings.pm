@@ -6,14 +6,45 @@ use Exporter 'import';
 our $VERSION = '1.00';
 our @EXPORT  = qw(headings);
 
-sub headings {
-    my $content = $_[0];
-    $content =~ s/###### (.*)/<h6>$1<\/h6>/g;
-    $content =~ s/##### (.*)/<h5>$1<\/h5>/g;
-    $content =~ s/#### (.*)/<h4>$1<\/h4>/g;
-    $content =~ s/### (.*)/<h3>$1<\/h3>/g;
-    $content =~ s/## (.*)/<h2>$1<\/h2>/g;
-    $content =~ s/# (.*)/<h1>$1<\/h1>/g;
+use span_gamut;
 
-    return $content;
+sub headings {
+	my $text = shift;
+
+	# Setext-style headers:
+	#	  Header 1
+	#	  ========
+	#  
+	#	  Header 2
+	#	  --------
+	#
+	$text =~ s{ ^(.+)[ \t]*\n=+[ \t]*\n+ }{
+		"<h1>"  .  span_gamut($1)  .  "</h1>\n\n";
+	}egmx;
+
+	$text =~ s{ ^(.+)[ \t]*\n-+[ \t]*\n+ }{
+		"<h2>"  .  span_gamut($1)  .  "</h2>\n\n";
+	}egmx;
+
+
+	# atx-style headers:
+	#	# Header 1
+	#	## Header 2
+	#	## Header 2 with closing hashes ##
+	#	...
+	#	###### Header 6
+	#
+	$text =~ s{
+			^(\#{1,6})	# $1 = string of #'s
+			[ \t]*
+			(.+?)		# $2 = Header text
+			[ \t]*
+			\#*			# optional closing #'s (not counted)
+			\n+
+		}{
+			my $h_level = length($1);
+			"<h$h_level>"  .  span_gamut($2)  .  "</h$h_level>\n\n";
+		}egmx;
+
+	return $text;
 }

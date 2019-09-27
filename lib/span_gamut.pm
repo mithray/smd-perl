@@ -22,13 +22,13 @@ sub span_gamut {
     my $text = shift;
 
     $text = code_spans($text);
-    $text = escape_special_characters($text);
-    $text = images($text);
-    $text = anchors($text);
-    $text = auto_links();
-    $text = amps_and_angles($text);
+#    $text = escape_special_characters($text);
+#    $text = images($text);
+#    $text = anchors($text);
+#    $text = auto_links();
+#    $text = amps_and_angles($text);
     $text = phrasing($text);
-    $text = line_breaks($text);
+#    $text = line_breaks($text);
 
     return $text;
 }

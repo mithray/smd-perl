@@ -8,7 +8,7 @@ use utf8;
 use FindBin;                  
 use lib "$FindBin::Bin/lib";
 
-# Span Gamut
+# Sections
 use block_gamut;
 use span_gamut;
 
@@ -17,16 +17,13 @@ use detab;
 use standardize_newlines;
 use get_html_skeleton;
 use get_file;
-
-# Globals
 use get_globals;
-
 
 
 sub convert_to_html {
     my $text = shift;
     $text = block_gamut($text);
-    $text = span_gamut($text);
+#    $text = span_gamut($text);
     return $text;
 }
 
@@ -36,7 +33,12 @@ sub end_with_newlines {
     return $text
 }
 
+sub trim_empty_line_space {
 
+    my $text = shift;
+    $text =~ s/^[ \t]*$//mg; #Delete lines of only spaces and tabs
+    return $text;
+}
 
 # Slurp whole File
 my $text;
@@ -45,13 +47,16 @@ my $text;
     $text= <>;
 }
 
-$text = standardize_newlines($text);
+#$text = standardize_newlines($text);
 #$text = end_with_newlines($text);
 $text = detab($text);
-$text =~ s/^[ \t]+$//mg; #Delete lines of only Spaces and tabs
+$text = trim_empty_line_space($text);
 $text= convert_to_html($text);
-my $html = get_html_skeleton();
-$html =~ s/<article>/<article>$text/;
+#my $html = get_html_skeleton();
+#$html =~ s/<article>/<article>$text/;
 
 
-print "$html"
+#print "$html";
+#
+
+print $text;

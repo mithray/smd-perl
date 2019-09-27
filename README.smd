@@ -2,7 +2,7 @@
 
 This is a markdown implementation intended to be flexible and hackable to support multiple versions of markdown.
 
-## Contents     
+## Contents
 
 ### Implemented
 
@@ -38,9 +38,10 @@ Comment with {>curly parenthesis and angle brackets<}
 
 Use ins with {+plus+} del with {-minus-}, mark with {=mark=} 
 
-
-
-## Headings h1-h6
+        
+        
+            
+## Headings h1-h6. With span gamut such as `code`. **bold**, *italics*, critic {-markup-}.
 
 Use between 1 and 6 **#** at the start of a line to generate a heading.
 
@@ -48,4 +49,6 @@ Superscript with ^carrots^. Subscript with ~tilds~.
 
 ## Code
 
-Inline code spans with `backticks`
+Inline code spans with `backticks`.
+
+    var some_var = 5

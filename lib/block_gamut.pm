@@ -19,10 +19,10 @@ sub block_gamut {
 
     $text = headings($text);
     $text = lists($text);
-    $text = horizontal_rules($text);
+#    $text = horizontal_rules($text);
     $text = code_blocks($text);
-    $text = block_quotes($text);
-    $text = hash_html_blocks($text);
+#    $text = block_quotes($text);
+#    $text = hash_html_blocks($text);
     $text = paragraphs($text);
 
     return $text;

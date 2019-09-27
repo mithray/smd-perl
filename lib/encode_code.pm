@@ -5,6 +5,7 @@ use warnings;
 use Exporter 'import';
 our $VERSION = '1.00';
 our @EXPORT  = qw(encode_code);
+use Digest::MD5 qw(md5_hex);
 
 use get_globals;
 
@@ -16,6 +17,11 @@ sub encode_code {
 #
     my %globals = get_globals();
     my %g_escape_table = $globals{'g_escape_table'};
+
+#my %g_escape_table;
+#foreach my $char (split //, '\\`*_{}[]()>#+-.!') {
+#	$g_escape_table{$char} = md5_hex($char);
+#}
 
     local $_ = shift;
 
