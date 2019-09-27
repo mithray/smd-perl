@@ -21,7 +21,16 @@ sub code_blocks {
     my %globals = get_globals();
     my $g_tab_width = $globals{'g_tab_width'};
 
+    $text =~ s {```(.*)\n(.*)\n```}{
+        my $language = $1;
+        my $codeblock = $2;
+        my $start = "<pre class='language-" . $language . "'><code class='language-" . $language . "'>";
+        my $end = '</code></pre>';
+        my $result = $start . $codeblock . $end;
+        $result;
+    }egmx;
 
+=codeblocks with indents
     $text =~ s{
             (?:\n\n|\A)
             (	            # $1 = the code block -- one or more lines, starting with a space/tab
@@ -41,6 +50,6 @@ sub code_blocks {
             $result = "\n\n<pre><code>" . $codeblock . "\n</code></pre>\n\n";
             $result;
         }egmx;
-
+=cut
 	return $text;
 }

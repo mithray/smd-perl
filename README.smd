@@ -51,4 +51,6 @@ Superscript with ^carrots^. Subscript with ~tilds~.
 
 Inline code spans with `backticks`.
 
-    var some_var = 5
+```javascript
+var some_var = 5
+```

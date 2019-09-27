@@ -39,6 +39,36 @@ sub trim_empty_line_space {
     $text =~ s/^[ \t]*$//mg; #Delete lines of only spaces and tabs
     return $text;
 }
+sub process_markdown{
+    my $text = shift;
+    $text = detab($text);
+    $text = trim_empty_line_space($text);
+    $text= convert_to_html($text);
+    return $text
+}
+
+		my %cli_opts;
+                my $VERSION = "0.0.1";
+		use Getopt::Long;
+		Getopt::Long::Configure('pass_through');
+		GetOptions(\%cli_opts,
+			'version',
+                        'shortversion',
+			'wrap',
+			'style',
+		);
+		if ($cli_opts{'version'}) {		# Version info
+			print "\nThis is Markdown, version $VERSION.\n";
+			print "Copyright 2004 John Gruber\n";
+			print "http://daringfireball.net/projects/markdown/\n\n";
+			exit 0;
+		}
+		if ($cli_opts{'shortversion'}) {		# Just the version number string.
+			print $VERSION;
+			exit 0;
+		}
+		if ($cli_opts{'style'}) {			# Use HTML tag style instead of XHTML
+                }
 
 # Slurp whole File
 my $text;
@@ -47,16 +77,19 @@ my $text;
     $text= <>;
 }
 
+$text = process_markdown($text);
+
+if ($cli_opts{'wrap'}) {			# Use HTML tag style instead of XHTML
+    my $wrapper= get_html_skeleton();
+    my $wrapped = $wrapper;
+    $wrapped =~ s/<article>/<article>$text/;
+    $text = $wrapped;
+}
+print $text;
 #$text = standardize_newlines($text);
 #$text = end_with_newlines($text);
-$text = detab($text);
-$text = trim_empty_line_space($text);
-$text= convert_to_html($text);
-#my $html = get_html_skeleton();
-#$html =~ s/<article>/<article>$text/;
 
 
 #print "$html";
 #
 
-print $text;

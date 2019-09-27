@@ -21,7 +21,7 @@ use line_breaks;
 sub span_gamut {
     my $text = shift;
 
-    $text = code_spans($text);
+#    $text = code_spans($text);
 #    $text = escape_special_characters($text);
 #    $text = images($text);
 #    $text = anchors($text);

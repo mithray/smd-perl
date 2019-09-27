@@ -17,7 +17,7 @@ sub get_globals {
     foreach my $char (split //, '\\`*_{}[]()>#+-.!') {
 	$g_escape_table{$char} = md5_hex($char);
     }
-    print %g_escape_table;
+    #print %g_escape_table;
     my $g_empty_element_suffix = " />";     # Change to ">" for HTML output
     my %globals = ( 
         'g_tab_width' => $g_tab_width, 

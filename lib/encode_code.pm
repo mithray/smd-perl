@@ -15,13 +15,13 @@ sub encode_code {
 # The point is that in code, these characters are literals,
 # and lose their special Markdown meanings.
 #
-    my %globals = get_globals();
-    my %g_escape_table = $globals{'g_escape_table'};
+#    my %globals = get_globals();
+#    my %g_escape_table = $globals{'g_escape_table'};
 
-#my %g_escape_table;
-#foreach my $char (split //, '\\`*_{}[]()>#+-.!') {
-#	$g_escape_table{$char} = md5_hex($char);
-#}
+my %g_escape_table;
+foreach my $char (split //, '\\`*_{}[]()>#+-.!') {
+	$g_escape_table{$char} = md5_hex($char);
+}
 
     local $_ = shift;
 
