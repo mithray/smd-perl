@@ -77,8 +77,40 @@ var some_var = 5
 @@@
 
 @@@mermaid
-graph LR
-    A --- B
-    B-->C[fa:fa-ban forbidden]
-    B-->D(fa:fa-spinner anteohu);
+graph TB
+subgraph Create Cipher
+    password("password") 
+    argon2id0hash("Argon2id Hash")
+    sha0hash("Sha 256 Hash")
+end
+subgraph Encryption
+    node0cipher("Node AES Cipher")
+    configstore("configstore")
+    storage("storage")
+end
+password0prompt -- prompt password --> password
+password -- argon2id stretching --> argon2id0hash
+argon2id0hash -- sha hash --> sha0hash
+sha0hash -- node createcipheriv --> node0cipher
+subgraph Prompts
+    password0prompt("Password Prompt")
+    information0prompt("Information Prompt")
+end
+subgraph Prepare String
+    padder("String Padder")
+end
+information0prompt -- prompts for information --> padder
+padder -- pads the information --> node0cipher
+node0cipher -- encrypts the information --> configstore
+configstore -- stores the information --> storage
+style padder fill:mediumseagreen,stroke:#ccc,stroke-width:1px;
+style password0prompt fill:lightcoral,stroke:#ccc,stroke-width:1px;
+style information0prompt fill:lightcoral,stroke:#ccc,stroke-width:1px;
+style password fill:darkgray,stroke:#ccc,stroke-width:1px;
+style argon2id0hash fill:darkgray,stroke:#ccc,stroke-width:1px;
+style sha0hash fill:darkgray,stroke:#ccc,stroke-width:1px;
+style node0cipher fill:steelblue,stroke:#ccc,stroke-width:1px;
+style configstore fill:steelblue,stroke:#ccc,stroke-width:1px;
+style storage fill:steelblue,stroke:#ccc,stroke-width:1px;
+style Prompts fill:steelblue,stroke:#ccc,stroke-width:1px;
 @@@

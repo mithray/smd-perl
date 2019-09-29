@@ -18,7 +18,11 @@ sub mermaid {
     $text =~ s {\@\@\@mermaid([^\n]*)\n(([^\n]*\n)*)\@\@\@}{
         my $title = $1;
         my $content = $2;
-        my $result= '<div class="mermaid">' . $content . '</div>';
+        my $result= "
+        <div class='mermaid'>
+        $content
+        </div>
+        ";
         $result;
     }egxs;
 

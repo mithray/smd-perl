@@ -44,76 +44,93 @@ ins {
 </style>
     <script src="https://cdn.jsdelivr.net/npm/echarts@4.3.0/dist/echarts.min.js"></script>
 
-    <article><p><h1>Markdown</h1></p>
+    <article>
 
-<p>This is a markdown implementation intended to be flexible and hackable to support multiple versions of markdown.</p>
+f4084a3fa5fdafc08d3c58c1520cfec9
 
-<p><h2>Contents</h2></p>
 
-<p><h3>Implemented</h3></p>
 
-<p><ul>
-<li>Headings
-</li>
-<li>Phrasing Elements
-</li>
-<li>HTML document wrapping and minimal styling
-</li>
-<li>Critic Markup
-</li>
-</ul>
-<h3>Not Implemented</h3></p>
+This is a markdown implementation intended to be flexible and hackable to support multiple versions of markdown.
 
-<p><ul>
-<li>Lists
-</li>
-<li>Line Breaks
-</li>
-<li>Videos
-</li>
-<li>Code & Syntax Highlighting
-</li>
-<li>Links
-</li>
-<li>Most things Really
-</li>
-<li>Inline HTML
-</li>
-<li>Blockquotes
-</li>
-<li>Images
-</li>
-<li>Tables
-</li>
-<li>Horizontal rule
-</li>
-<li>TEX
-</li>
-</ul>
-<h2>Phrasing Elements</h2></p>
 
-<p>To use <strong>strong</strong> tags put double ** or __ on each side of a word or phrase.
-To use <strong>em</strong> tags put single * or _ on each side of a word or phrase.</p>
 
-<p><h2>Critic Markup</h2></p>
+bdeaf3c68b4afdc082531507680aea6f
 
-<p>Comment with <mark><em>curly parenthesis and angle brackets</em></mark></p>
 
-<p>Use ins with <ins>plus</ins> del with <del>minus</del>, mark with <mark>mark</mark> </p>
 
-<p><h2>Headings h1-h6. With span gamut such as `code`. <strong>bold</strong>, <em>italics</em>, critic <del>markup</del>.</h2></p>
 
-<p>Use between 1 and 6 <strong>#</strong> at the start of a line to generate a heading.</p>
 
-<p>Superscript with <sup>carrots</sup>. Subscript with <sub>tilds</sub>. </p>
+0a35e5914bfb04d15d1720b832633df1
 
-<p><h2>Code</h2></p>
 
-<p>Inline code spans with `backticks`.</p>
 
-<p><pre class='language-javascript'><code class='language-javascript'>var some_var = 5</code></pre></p>
 
-<p><div id="chartf7d2cf597080becf2b84b8c230e065d9" style="width: 100%;height: 30em;"></div>
+
+aed38f34713409e72b5119374c38f007
+
+
+
+
+3378de430ebedf069eb6b739aad2a8ea
+
+
+
+
+
+dedc0823aedf8e6059318a6f9554c8be
+
+
+
+
+6a5e35529bc83a1dc02df5da3029b2d6
+
+
+
+To use **strong** tags put double ** or __ on each side of a word or phrase.
+To use **em** tags put single * or _ on each side of a word or phrase.
+
+
+
+f0d9c2a53e528ffdf97a1bbb34ec094b
+
+
+
+Comment with {>curly parenthesis and angle brackets<}
+
+Use ins with {+plus+} del with {-minus-}, mark with {=mark=} 
+
+
+
+
+
+
+74e5ce982225146b8e553cab8aea38c7
+
+
+
+Use between 1 and 6 **#** at the start of a line to generate a heading.
+
+Superscript with ^carrots^. Subscript with ~tilds~. 
+
+
+
+1554f99c9e0ef34695263b4c56cf3131
+
+
+
+Inline code spans with `backticks`.
+
+
+
+a9864e73cf47778dcac73607bbbf5746
+
+
+
+
+
+353768c065d1fe81a2676bb7f2edc73b
+
+
             <script type='text/javascript'>
                 let options = {
     title: {
@@ -137,13 +154,50 @@ To use <strong>em</strong> tags put single * or _ on each side of a word or phra
                 let chartf7d2cf597080becf2b84b8c230e065d9 = echarts.init(document.getElementById("chartf7d2cf597080becf2b84b8c230e065d9"))
                 chartf7d2cf597080becf2b84b8c230e065d9.setOption(options)
             </script>
-        </p>
+        
 
-<p><div class="mermaid">graph LR
-    A --- B
-    B-->C[fa:fa-ban forbidden]
-    B-->D(fa:fa-spinner anteohu);
-</div></p></article>
+
+        <div class='mermaid'>
+        graph TB
+subgraph Create Cipher
+    password("password") 
+    argon2id0hash("Argon2id Hash")
+    sha0hash("Sha 256 Hash")
+end
+subgraph Encryption
+    node0cipher("Node AES Cipher")
+    configstore("configstore")
+    storage("storage")
+end
+password0prompt -- prompt password --> password
+password -- argon2id stretching --> argon2id0hash
+argon2id0hash -- sha hash --> sha0hash
+sha0hash -- node createcipheriv --> node0cipher
+subgraph Prompts
+    password0prompt("Password Prompt")
+    information0prompt("Information Prompt")
+end
+subgraph Prepare String
+    padder("String Padder")
+end
+information0prompt -- prompts for information --> padder
+padder -- pads the information --> node0cipher
+node0cipher -- encrypts the information --> configstore
+configstore -- stores the information --> storage
+style padder fill:mediumseagreen,stroke:#ccc,stroke-width:1px;
+style password0prompt fill:lightcoral,stroke:#ccc,stroke-width:1px;
+style information0prompt fill:lightcoral,stroke:#ccc,stroke-width:1px;
+style password fill:darkgray,stroke:#ccc,stroke-width:1px;
+style argon2id0hash fill:darkgray,stroke:#ccc,stroke-width:1px;
+style sha0hash fill:darkgray,stroke:#ccc,stroke-width:1px;
+style node0cipher fill:steelblue,stroke:#ccc,stroke-width:1px;
+style configstore fill:steelblue,stroke:#ccc,stroke-width:1px;
+style storage fill:steelblue,stroke:#ccc,stroke-width:1px;
+style Prompts fill:steelblue,stroke:#ccc,stroke-width:1px;
+
+        </div>
+        
+</article>
 
     <script src="https://unpkg.com/mermaid@8.3.1/dist/mermaid.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/prismjs@1.17.1/components/prism-core.min.js"></script>

@@ -26,8 +26,8 @@ sub block_gamut {
     $text = code_blocks($text);
     $text = mermaid($text);
 #    $text = block_quotes($text);
-#    $text = hash_html_blocks($text);
-    $text = paragraphs($text);
+    $text = hash_html_blocks($text);
+#    $text = paragraphs($text);
 
     return $text;
 }
